@@ -12,6 +12,6 @@ def username(request):
         return authenticator.error_response()
     return authenticator.response(
         {
-            "date_joined": authenticator.user.username
+            "username": authenticator.user.username
         }
     )
