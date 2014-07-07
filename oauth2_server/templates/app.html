@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}App: {{ app.name }}{% endblock %}
+{% block content %}
+{% if installed %}
+<p><a href="{% url 'revoke_app' app.id %}">REVOKE APP</a></p>
+{% endif %}
+<ul>
+  <li>Name: {{ app.name }}</li>
+    <li>Description:
+        <pre> {{ app.description }} </pre>
+    </li>
+  <li>Key: {{ app.key }}</li>
+  <li>Secret: {{ app.secret }}</li>
+  <li>Redirect URI: {{ app.redirect_uri }}</li>
+  <li>Owner: app.owner.username </li>
+</ul>
+{% endblock content %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}You have successfully registered an app!{% endblock title %}
+{% block content %}
+<p>You have successfully registered: {{ app.name }}</p>
+<p>Details of the app</p>
+<ul>
+  <li>Name: {{ app.name }}</li>
+  <li>Description: <pre>{{ app.description }}</pre></li>
+  <li>Key: {{ app.key }}</li>
+  <li>Secret: {{ app.secret }}</li>
+  <li>Redirect URI: {{ app.redirect_uri }}</li>
+  <li>IFrame URL: {{ app.iframe_url }}</li>
+  <li>Owner: {{ app.owner.username }}</li>
+</ul>
+{% endblock content %}

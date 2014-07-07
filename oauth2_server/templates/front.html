@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Apps{% endblock title %}
+{% block content %}
+  <h1>All Apps</h1>
+  {% if apps %}
+  <ul>
+    {% for app in apps %}
+    <li>Name: <a href="{% url 'app' app.id %}">{{ app.name }}</a></li>
+    <li>Description:
+        <pre> {{ app.description }} </pre>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>There are no registered apps.</p>
+  {% endif %}
+  {% if installed_apps %}
+  <h1>Installed apps</h1>
+  <ul>
+    {% for app in installed_apps %}
+    <li>Name: <a href="{% url 'app' app.id %}">{{ app.name }}</a></li>
+    <li>Description:
+        <pre> {{ app.description }} </pre>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+{% endblock content %}

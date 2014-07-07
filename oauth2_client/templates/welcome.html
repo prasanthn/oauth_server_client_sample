@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Welcome!{% endblock title %}
+{% block head %}<meta http-equiv="refresh" content="5; url=http://127.0.0.1:8000/">{% endblock head %}
+{% block content %}
+{% if data.access_token %}
+<h1>Welcome</h1>
+<p>You have given access to this app. You will be redirected to server.</p>
+<ul>
+    <li>Access Token: {{ data.access_token }}</li>
+    <li>Token type: {{ data.token_type }}</li>
+    <li>Expires in: {{ data.expires_in }}</li>
+    <li>Refresh token: {{ data.refresh_token }}</li>
+    <li>Scope: {{ data.scope }}</li>
+</ul>
+{% else %}
+<h1>Error</h1>
+<p>
+    <pre>{{ data.error }}</pre>
+    <pre>{{ data.error_description }}</pre>
+</p>
+{% endif %}
+{% endblock content %}

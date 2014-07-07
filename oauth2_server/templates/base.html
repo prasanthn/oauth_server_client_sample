@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}{% endblock title %}</title>
+  {% block headlinks %}{% endblock headlinks %}
+  <style>
+    #nav-list li{
+      display: inline;
+      list-style: none;
+    }
+  </style>
+  <style type="text/css">
+    {% block headcss %}{% endblock headcss %}
+  </style>
+  {% block headscripts %}{% endblock headscripts %}
+  <script type="text/javascript">
+    {% block headjs %}{% endblock headjs %}
+  </script>
+</head>
+<body>
+  <div>
+    <ul id="nav-list">
+      {% if user.is_authenticated %}
+      <li>Hello, {{ user.username }} | </li>
+      {% endif %}
+      <li><a href="{% url 'front' %}">Front</a> | </li>
+      {% if user.is_authenticated %}
+      <li><a href="{% url 'register_app' %}">Register app</a> | </li>
+      <li><a href="{% url 'install_app' %}">Install app</a> | </li>
+      <li><a href="{% url 'logout' %}">Logout</a></li>
+      {% else %}
+      <li><a href="{% url 'login' %}">Login</a></li>
+      {% endif %}
+    </ul>
+  </div>
+  {% block content %}{% endblock content %}
+</body>
+</html>

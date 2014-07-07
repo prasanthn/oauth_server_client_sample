@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}{% endblock title %}</title>
+  {% block head %}{% endblock head %}
+  {% block headlinks %}{% endblock headlinks %}
+  <style>
+    #nav-list li{
+      display: inline;
+      list-style: none;
+    }
+  </style>
+  <style type="text/css">
+    {% block headcss %}{% endblock headcss %}
+  </style>
+  {% block headscripts %}{% endblock headscripts %}
+  <script type="text/javascript">
+    {% block headjs %}{% endblock headjs %}
+  </script>
+</head>
+<body>
+  {% block content %}{% endblock content %}
+</body>
+</html>

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Revoke an app{% endblock title %}
+{% block content %}
+<h1>Revoke an app</h1>
+<p>Are you sure you want to revoke access to {{ app.name }}></p>
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" name="consent" value="Yes">
+    <input type="submit" name="consent" value="No">
+</form>
+{% endblock content %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Install an app{% endblock title %}
+{% block content %}
+{% if apps %}
+<h1>Install an app</h1>
+{% for app in apps %}
+<h2>{{ app.name }}</h2>
+<pre>{{ app.description }}</pre>
+<!-- <form method="get" action="/oauth2/authorize">
+    <input type="hidden" name="redirect_uri" value="{{ app.redirect_uri }}" />
+    <input type="hidden" name="response_type" value="token" />
+    <input type="hidden" name="client_id" value="{{ app.key }}" />
+    <input type="hidden" name="scope" value="date_joined" />
+    <input type="submit" value="Install" />
+</form> -->
+<form method="get" action="/oauth2/{% if app.response_type == 'code' %}authorize-code{% else %}authorize{% endif %}">
+    <input type="hidden" name="redirect_uri" value="{{ app.redirect_uri }}" />
+    <input type="hidden" name="response_type" value="{{ app.response_type }}" />
+    <input type="hidden" name="client_id" value="{{ app.key }}" />
+    <input type="hidden" name="scope" value="date_joined" />
+    <input type="submit" value="Install" />
+</form>
+{% endfor %}
+{% else %}
+<p>There are no apps</p>
+{% endif %}
+{% endblock content %}

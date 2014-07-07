@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}An app requests your authorization.{% endblock title %}
+{% block content %}
+<h1>Authorize app</h1>
+<p>The app {{ app.name }} is requesting your permission to access your data on
+    this server.
+
+    {% if access_ranges %}
+    By clicking "yes" you will give the app access to the following data:
+    <ul>
+        {% for scope in access_ranges %}
+        <li>{{ scope.key }} : {{ scope.description }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>By clicking "yes" you will give app acess to basic data.</p>
+    {% endif %}
+
+    <p>When you click "yes" you will be redirected to the applications page.</p>
+
+    <form action="{{ action }}" method="{{ method }}">
+        {% csrf_token %}
+        <input type="submit" name="connect" value="No">
+        <input type="submit" name="connect" value="Yes">
+    </form>
+
+{% endblock content %}
