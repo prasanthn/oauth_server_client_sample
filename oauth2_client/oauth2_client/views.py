@@ -6,6 +6,10 @@ from django.shortcuts import render
 from . import models
 
 
+def front(request):
+    pass
+
+
 def redirect_uri(request):
     return render(request, 'welcome_token.html')
 
@@ -36,3 +40,7 @@ def redirect_uri_code(request):
             )
 
     return render(request, "welcome.html", {'data': data})
+
+
+def iframe_url(request):
+    pass
